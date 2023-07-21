@@ -23,26 +23,27 @@ func NewRuleConfigParser(configFormat string) IRuleConfigParser {
 	if configFormat == "" {
 		return nil
 	}
-	
+
 	return createParser(configFormat)
 }
 
 type RuleConfigSource struct{}
 
 // load
-//  @Date 20230720
-//	@Description: load and parse config file
-//	@receiver rc
-//	@param ruleConfigFilePath
-//	@return *RuleConfig
-//	@return error
+//
+//	 @Date 20230720
+//		@Description: load and parse config file
+//		@receiver rc
+//		@param ruleConfigFilePath
+//		@return *RuleConfig
+//		@return error
 func (rc *RuleConfigSource) load(ruleConfigFilePath string) (*RuleConfig, error) {
 	ruleConfigFileExtension := rc.getFileExtension(ruleConfigFilePath)
 	parser := createParser(ruleConfigFileExtension)
 	if parser == nil {
 		return nil, fmt.Errorf("rule config file format is not supported: %s", ruleConfigFileExtension)
 	}
-	
+
 	configText := ""
 	return parser.parse(configText), nil
 }
@@ -54,13 +55,14 @@ func (rc *RuleConfigSource) getFileExtension(ruleConfigFilePath string) string {
 
 func createParser(configFormat string) IRuleConfigParser {
 	var parser IRuleConfigParser
+	// 实际上，如果 switch 分支并不是很多，代码中存在 switch 分支也是可以接受的。
 	switch configFormat {
 	case "json":
 		parser = &JSONRuleConfigParser{}
 	default:
 		parser = nil
 	}
-	
+
 	return parser
 }
 
@@ -69,29 +71,35 @@ type RuleConfigParserFactory struct {
 	cachedParsers map[string]IRuleConfigParser
 }
 
+var cachedParsers = map[string]IRuleConfigParser{
+	"json": new(JSONRuleConfigParser),
+	"xml":  new(XMLRuleConfigParser),
+}
+
 func NewRuleConfigParserFactory() *RuleConfigParserFactory {
-	return &RuleConfigParserFactory{
-		cachedParsers: map[string]IRuleConfigParser{
-			"json": new(JSONRuleConfigParser),
-			"xml":  new(XMLRuleConfigParser),
-		},
+	// 如果添加新的 parser，势必改动此处的代码，是不是违反了开闭原则？
+	// 实际上，如果并非频繁地添加新的 parser，只是偶尔修改，即便实现不符合开闭原则，也是可以接受的。
+	pf := &RuleConfigParserFactory{}
+	if len(cachedParsers) > 0 {
+		pf.cachedParsers = cachedParsers
 	}
+	return pf
 }
 
 func (f *RuleConfigParserFactory) CreateParser(configFormat string) IRuleConfigParser {
 	if configFormat == "" {
 		return nil
 	}
-	
+
 	if len(f.cachedParsers) == 0 {
 		return nil
 	}
-	
+
 	parser, ok := f.cachedParsers[configFormat]
 	if !ok {
 		return nil
 	}
-	
+
 	return parser
 }
 
