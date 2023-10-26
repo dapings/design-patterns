@@ -4,13 +4,13 @@
 
 ### 创建型设计模式
 
-- 单例模式
+- [单例模式](./singleton/README.md)
 - [工厂模式](./factory/README.md)
   - 简单工厂
   - 工厂方法
   - 抽象工厂
 - [建造者模式](./builder/README.md)
-- 原型模式
+- [原型模式](./prototype/README.md)
 
 ### 结构型设计模式
 
@@ -18,7 +18,7 @@
 - 装饰器模式
 - 适配器模式
 - 桥接模式
-- 门面模式
+- [门面模式](./facade/README.md)
 - 组合模式
 - 享元模式
 
