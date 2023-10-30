@@ -20,7 +20,7 @@
 - 桥接模式
 - [门面模式](./facade/README.md)
 - [组合模式](./composite/README.md)
-- 享元模式
+- [享元模式](./flyweight/README.md)
 
 ### 行为型设计模式
 
