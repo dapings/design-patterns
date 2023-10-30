@@ -19,7 +19,7 @@
 - [适配器模式](./adapter/README.md)
 - 桥接模式
 - [门面模式](./facade/README.md)
-- 组合模式
+- [组合模式](./composite/README.md)
 - 享元模式
 
 ### 行为型设计模式
