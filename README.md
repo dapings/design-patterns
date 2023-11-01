@@ -17,7 +17,7 @@
 - [代理模式](./proxy/README.md)
 - [装饰器模式](./decorator/README.md)
 - [适配器模式](./adapter/README.md)
-- 桥接模式
+- [桥接模式](./bridge/README.md)
 - [门面模式](./facade/README.md)
 - [组合模式](./composite/README.md)
 - [享元模式](./flyweight/README.md)
