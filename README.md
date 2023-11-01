@@ -15,7 +15,7 @@
 ### 结构型设计模式
 
 - [代理模式](./proxy/README.md)
-- 装饰器模式
+- [装饰器模式](./decorator/README.md)
 - [适配器模式](./adapter/README.md)
 - 桥接模式
 - [门面模式](./facade/README.md)
