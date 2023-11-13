@@ -2,6 +2,7 @@ package interpreter
 
 import (
 	"fmt"
+	"testing"
 )
 
 func ExampleInterpret() {
@@ -13,4 +14,14 @@ func ExampleInterpret() {
 	fmt.Println(i.Interpret())
 	// Output:
 	// true
+}
+
+func TestInterpreter(t *testing.T) {
+	p := &Parser{}
+	p.Parse("1 + 2 + 3 - 4 + 5 - 6")
+	got := p.Result().Interpret()
+	expected := 1
+	if got != expected {
+		t.Fatalf("expected %d, but got %d", expected, got)
+	}
 }
