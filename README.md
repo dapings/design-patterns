@@ -31,7 +31,7 @@
 - 16 状态模式
 - 12 迭代器模式
 - [23 访问者模式](./visitor/README.md)
-- 17 备忘录模式
+- [17 备忘录模式](./memento/README.md)
 - 11 命令模式
 - [19 解释器模式](./interpreter/README.md)
 - 08 中介模式
