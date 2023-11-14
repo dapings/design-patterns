@@ -28,7 +28,7 @@
 - 14 模板方法模式
 - [15 策略模式](./strategy/README.md)
 - [21 职责链模式](./chain_of_responsiblility/README.md)
-- 16 状态模式
+- [16 状态模式](./state/README.md)
 - 12 迭代器模式
 - [23 访问者模式](./visitor/README.md)
 - [17 备忘录模式](./memento/README.md)
