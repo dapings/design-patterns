@@ -1,5 +1,7 @@
 # 学习笔记：The beauty of design patterns 设计模式之美
 
+> 组合优于继承。应用复杂的方法就是拆分。浅拷贝，只是复制了对象的引用。
+
 ## 设计模式实例代码
 
 ### 创建型设计模式
@@ -29,7 +31,7 @@
 - [15 策略模式](./strategy/README.md)
 - [21 职责链模式](./chain_of_responsiblility/README.md)
 - [16 状态模式](./state/README.md)
-- 12 迭代器模式
+- [12 迭代器模式](./iterator/README.md)
 - [23 访问者模式](./visitor/README.md)
 - [17 备忘录模式](./memento/README.md)
 - 11 命令模式
