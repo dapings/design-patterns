@@ -17,8 +17,8 @@ type Downloader interface {
 
 // 父类
 type template struct {
-	implement
-	uri string
+	implement // anonymous composition
+	uri       string
 }
 
 func newTemplate(impl implement) *template {
@@ -40,7 +40,7 @@ func (t *template) save() {
 }
 
 type HTTPDownloader struct {
-	*template
+	*template // anonymous composition
 }
 
 func NewHTTPDownloader() Downloader {
@@ -59,7 +59,7 @@ func (*HTTPDownloader) save() {
 }
 
 type FTPDownloader struct {
-	*template
+	*template // anonymous composition
 }
 
 func NewFTPDownloader() Downloader {

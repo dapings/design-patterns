@@ -21,3 +21,19 @@ func ExampleFTPDownloader() {
 	// default save
 	// finish downloading
 }
+
+func ExampleConcrete() {
+	a := &ConcreteClassA{}
+	a.TemplateMethod()
+
+	b := &ConcreteClassB{}
+	b.TemplateMethod()
+
+	// Output:
+	// 具体类A的模板方法
+	// 具体类A的操作1
+	// 具体类A的操作2
+	// 具体类B的模板方法
+	// 具体类B的操作1
+	// 具体类B的操作2
+}
