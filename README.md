@@ -25,7 +25,7 @@
 ### 行为型设计模式
 
 - 10 观察者模式
-- 14 模板方法模式
+- [14 模板方法模式](./template_method/README.md)
 - [15 策略模式](./strategy/README.md)
 - [21 职责链模式](./chain_of_responsiblility/README.md)
 - [16 状态模式](./state/README.md)
