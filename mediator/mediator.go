@@ -3,6 +3,7 @@ package mediator
 import (
 	"fmt"
 	"strings"
+	"sync"
 )
 
 type Mediator struct {
@@ -12,11 +13,16 @@ type Mediator struct {
 	Sound *SoundCard
 }
 
-var mediator *Mediator
+var (
+	once     sync.Once
+	mediator *Mediator
+)
 
 func GetMediatorInstance() *Mediator {
 	if mediator == nil {
-		mediator = &Mediator{}
+		once.Do(func() {
+			mediator = &Mediator{}
+		})
 	}
 	return mediator
 }
