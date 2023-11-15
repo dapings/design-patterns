@@ -36,7 +36,7 @@
 - [17 备忘录模式](./memento/README.md)
 - [11 命令模式](./command/README.md)
 - [19 解释器模式](./interpreter/README.md)
-- 08 中介模式
+- [08 中介模式](./mediator/README.md)
 
 ## 参考
 
