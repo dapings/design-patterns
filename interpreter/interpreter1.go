@@ -44,6 +44,7 @@ type Parser struct {
 }
 
 func (p *Parser) Parse(exp string) {
+	// 处理语法规则
 	p.exp = strings.Split(exp, " ")
 
 	for {
