@@ -12,6 +12,7 @@ type Command interface {
 
 // 主板单中的启动(start)方法和重启(reboot)方法
 
+// MotherBoard 命令对象接收者实例
 type MotherBoard struct{}
 
 func (*MotherBoard) Start() {
@@ -21,6 +22,8 @@ func (*MotherBoard) Start() {
 func (*MotherBoard) Reboot() {
 	fmt.Print("system rebooting\n")
 }
+
+// 具体的命令实例
 
 type StartCommand struct {
 	mb *MotherBoard
@@ -52,6 +55,7 @@ func (c *RebootCommand) Execute() {
 
 // 封装的命令对象，传递到主机(box)对象中
 
+// Box 命令对象调用者实例
 type Box struct {
 	button1 Command
 	button2 Command
