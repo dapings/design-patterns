@@ -17,3 +17,22 @@ func ExampleObserver() {
 	// reader2 receive observer mode
 	// reader3 receive observer mode
 }
+
+func ExampleEventListener() {
+	observer1 := &ConcreteObserver{"Observer1"}
+	observer2 := &ConcreteObserver{"Observer2"}
+
+	subject := &ConcreteSubject{}
+	subject.AddObserver(observer1)
+	subject.AddObserver(observer2)
+
+	// 修改被观察者对象的状态
+	subject.state = 100
+
+	// 通知观察者对象
+	subject.NotifyObservers()
+
+	// Output:
+	// Observer Observer1 got state 100
+	// Observer Observer2 got state 100
+}
