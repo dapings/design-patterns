@@ -15,6 +15,13 @@ type singleton struct {
 
 func (s singleton) bar() {}
 
+// 饿汉式
+
+var Instance = new(singleton)
+
+// 懒汉式
+// 方式一：sync.Once
+
 var (
 	instance *singleton
 	once     sync.Once
@@ -26,4 +33,15 @@ func GetInstance() Singleton {
 	})
 
 	return instance
+}
+
+// 方式二：sync.Mutex
+
+var (
+	instancesMutex *singleton
+	mutex          sync.Mutex
+)
+
+func GetInstanceMutex() Singleton {
+	return nil
 }
