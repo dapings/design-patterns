@@ -39,3 +39,15 @@ func TestParallelSingleton(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkSingleton(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetInstanceMutex()
+	}
+}
+
+func BenchmarkSingletonDoubleCheck(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetInstanceMutexDoubleCheck()
+	}
+}

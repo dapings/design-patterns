@@ -43,5 +43,39 @@ var (
 )
 
 func GetInstanceMutex() Singleton {
-	return nil
+	// 同步化(锁保护)实际上只在instance变量，第一次被赋值之前才有用。
+	// 每次在调用获取实例时，都需要执行锁。
+	mutex.Lock()
+	if instancesMutex == nil {
+		instancesMutex = new(singleton)
+	}
+	mutex.Unlock()
+
+	return instancesMutex
+}
+
+func GetInstanceMutexDoubleCheck() Singleton {
+	// 同步化(锁保护)实际上只在instance变量，第一次被赋值之前才有用。
+	// 每次在调用获取实例时，都需要执行锁。
+	// mutex.Lock()
+	// if instancesMutex == nil {
+	// 	instancesMutex = new(singleton)
+	// }
+	// mutex.Unlock()
+
+	// NOTE: 在instance变量有值后，同步化变成一个不必要的瓶颈，使用双重检查，去掉这个小小的额外开销！
+	// 双重检查中，在实例化后，锁永远不会被执行。
+	// 第一次检查
+	if instancesMutex == nil {
+		// 可能有多个G同时到达，避免多个G同时实例化singleton。
+		mutex.Lock()
+		// 每个时刻只会有一个G
+		// 第二次检查
+		if instancesMutex == nil {
+			instancesMutex = new(singleton)
+		}
+		mutex.Unlock()
+	}
+
+	return instancesMutex
 }
